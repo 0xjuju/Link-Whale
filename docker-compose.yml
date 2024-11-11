@@ -1,0 +1,33 @@
+services:
+  django:
+    build: .
+    container_name: link_whale
+    command: gunicorn --bind :8000 _settings.wsgi:application
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - celery_worker
+
+  celery_worker:
+    build: .
+    container_name: celery_worker
+    command: celery -A _settings worker --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+
+  celery_beat:
+    build: .
+    container_name: celery_beat
+    command: celery -A _settings beat --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - django
