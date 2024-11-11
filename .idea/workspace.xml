@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21bdc1c7-042e-4be4-900b-7e3a8291dd64" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/diagrams/initialize_bot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diagrams/user_bot_interaction.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="21bdc1c7-042e-4be4-900b-7e3a8291dd64" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
