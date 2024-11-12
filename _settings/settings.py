@@ -29,6 +29,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Celery configuration
+CELERY_BROKER_URL = f"sqs://{decouple.config('AWS_ACCESS_KEY')}:{decouple.config('AWS_SECRET')}@"
+
+CELERY_BROKER_TRANSPORT_OPTIONS = {
+    'region': decouple.config('AWS_REGION'),
+    'visibility_timeout': 3600,  # Time in seconds for message visibility timeout
+    'polling_interval': 1,  # Time between polling for new messages (in seconds)
+    'queues': [decouple.config('AWS_SQS_NAME')],
+}
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
 
 # Application definition
 
@@ -39,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'telegram_api'
 ]
 
 MIDDLEWARE = [

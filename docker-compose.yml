@@ -14,7 +14,7 @@ services:
 
   celery_worker:
     build: .
-    container_name: celery_worker
+    container_name: telegram_celery_worker
     command: celery -A _settings worker --loglevel=info
     volumes:
       - .:/app
@@ -23,7 +23,7 @@ services:
 
   celery_beat:
     build: .
-    container_name: celery_beat
+    container_name: telegram_celery_beat
     command: celery -A _settings beat --loglevel=info
     volumes:
       - .:/app
