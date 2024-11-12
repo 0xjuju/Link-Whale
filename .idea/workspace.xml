@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21bdc1c7-042e-4be4-900b-7e3a8291dd64" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/telegram_api/bot_factory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram_api/tasks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram_api/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram_api/tests/test_bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_settings/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/_settings/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_settings/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/_settings/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="21bdc1c7-042e-4be4-900b-7e3a8291dd64" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
