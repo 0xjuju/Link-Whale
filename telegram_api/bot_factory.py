@@ -20,7 +20,6 @@ class TelegramBotFactory:
             group_id (str, optional): The Telegram group chat ID. Defaults to None.
         """
         try:
-            # Load the bot key from the .env file using decouple.config().
             self.bot_key: str = config(f'BOT_KEY_{bot.upper()}')
             self.client: telegram.Bot = telegram.Bot(token=self.bot_key)
             self.group_id: str = group_id if group_id is not None else None
