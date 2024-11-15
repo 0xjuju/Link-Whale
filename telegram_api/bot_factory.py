@@ -6,12 +6,14 @@ import asyncio
 
 
 class TelegramBotFactory:
+
     """
     Factory class to create instances of Telegram bots.
     Each bot instance uses a unique key provided by the Telegram Bot API and can automatically retrieve the group ID.
     """
 
     def __init__(self, bot: str, group_id: str = None) -> None:
+
         """
         Initialize the factory by loading the Telegram bot key from the .env file.
 
@@ -19,6 +21,7 @@ class TelegramBotFactory:
             bot (str): The name identifier of the bot.
             group_id (str, optional): The Telegram group chat ID. Defaults to None.
         """
+
         try:
             self.bot_key: str = config(f'BOT_KEY_{bot.upper()}')
             self.client: telegram.Bot = telegram.Bot(token=self.bot_key)
@@ -30,9 +33,9 @@ class TelegramBotFactory:
             # If group_id is None, try to automatically retrieve it from updates
             if self.group_id is None:
                 self.group_id = self._retrieve_group_id()
+
         except Exception as e:
             print(f"Error initializing bot for {bot}: {e}")
-            raise
 
     def _retrieve_group_id(self) -> str:
         """
