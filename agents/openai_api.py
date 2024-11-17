@@ -1,7 +1,8 @@
-from decouple import config
-import openai
 from agents.models import LLM, RAGContext
 from companies.models import Company
+from decouple import config
+import openai
+import tiktoken
 
 
 class LLMFactory:
@@ -82,7 +83,13 @@ class LLMFactory:
         embeddings = self.create_text_embeddings(context_documents)
         rag_context = RAGContext.objects.create(
             name=context_name,
-            documents=context_documents,
+            documents=[
+                {
+                    "content": doc,
+                    "summary": "",
+                    "published": ""
+                } for doc in context_documents
+            ],
             embeddings=embeddings,
             llm=self._get_llm()
         )
@@ -177,4 +184,19 @@ class LLMFactory:
             thread_id=thread_id,
             assistant_id=assistant_id,
         )
+
         return response
+
+    def get_token_count(self, document: str) -> int:
+        """
+        Get the token count of a given document.
+
+        Args:
+            document (str): The document for which to count tokens.
+
+        Returns:
+            int: The number of tokens in the document.
+        """
+        encoding = tiktoken.encoding_for_model(self.model)
+        tokens = encoding.encode(document)
+        return len(tokens)

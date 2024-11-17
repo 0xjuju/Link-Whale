@@ -1,0 +1,56 @@
+﻿Bloktopia’s 2024 Roadmap: A New Era of Metaverse Development!
+2024 is set to be the biggest year yet for Bloktopia following the release of the new Roadmap
+e are thrilled to announce that Bloktopia’s 2024 roadmap is now live and available for viewing on our website! bloktopia.com/roadmap
+This roadmap represents a significant update from our original version, reflecting the dynamic nature of building a metaverse and our commitment to transparency and community engagement.
+It is also structured slightly differently, reflecting on what has been developed and released already, with this laying a crucial foundation for our short/mid/long term developments.
+As a result, the new roadmap focuses now around four key pillars:
+* Released: an overview of what is already delivered and accessible through M3TASPACES and M3TAPASS.
+* Final Testing: the closest products and features to being released next.
+* In Development: a list of products and features which we are working on and are close to testing for release.
+* What is to come: Longer term plans feeding into the development pipeline and a section for community driven ideas which have the potential to get added to our future development stack.
+What Is Coming Next?
+As we moved into 2024, we pledged to take our development to the next level. This is where clear goals have been set out for our deliverables, with some already in the final testing stage, and others starting in the development phase. These include:
+* Arcade Games (Play to Earn) with a global Gaming Leaderboard.
+* Virtual Headquarters for Tier 1 crypto partners.
+* A Crypto launch event in M3TASPACES to welcome these partners and showcase features within their HQ’s.
+* Multiple themed levels across the Bloktopia Skyscraper, offering different experiences for wherever users are.
+* BLOK Buster Quizzing Arena.
+* Release of the REBLOK owners reward system.
+* A huge source of information with Twitch, YouTube and Twitter integration, RSS Feeds, AI BOTs & Crypto Token Tickers.
+* Clear navigation with an Instance Manager, and an Elevator System for travel.
+* Room for up to 10,000 concurrent users within the metaverse.
+* DAO voting directly within Bloktopia.
+As for features that aren’t directly within the Metaverse:
+* An updated version of M3TAPASS that has inbuilt Crypto Wallet Functionality and Push Notifications.
+* Integration of $BLOK on the Arbitrum chain.
+* MAC/ IOS and Android downloadable build to match the Windows PC downloader, along with Mobile and Tablet compatibility.
+* VR v2.0 compatible for Apple Vision Pro and Oculus Quest 3 devices.
+* A new Cloud-based Streaming Provider, truly making Bloktopia accessible for all!
+Get your $BLOK out!
+In addition to the exciting developments and releases outlined in our roadmap, we’re enhancing the utility of $BLOK tokens within Bloktopia.
+$BLOK integration for purchases within the Metaverse was a key utility when launching the token, and the promise has been kept with the new uses cases as part of the roadmap update. Examples include:
+* P2E games with an integrated In-Metaverse (In-Game) Wallet to use your $BLOK for competing and earning
+* Trading functionality within virtual HQs to buy and sell $BLOK within the Metaverse
+* Digital Wearable NFTs for avatars- whether that be items from the biggest brands in fashion, or showing support for your favourite crypto brands wearing their merchandise, it will all be available to buy with $BLOK
+* Purchase tickets for premium gated events within M3TASPACES
+* Even more Staking Pools, JOBES and REBLOK NFTs, all purchasable directly within the Bloktopia HQ
+What is to come after all of that?
+Even with all of the new exciting features in final testing that are close to being released, and with all the features listed above that are already in development, we’re still not stopping there!
+We’re already looking ahead to the next phase of our development- with a sneak peek at what’s to come right here:
+* Private Rooms — REBLOK goes on sale: We’re introducing Private Rooms that will be available for purchase as REBLOK through the Landsale Portal.
+* Private Rooms live in Bloktopia: These spaces also referred to as apartments, will be fully integrated into Bloktopia, providing users with their own areas to personalise, socialise within with friends and more importantly own.
+* AI audio language translation and AI text chat translation: We’re breaking down language barriers with AI-powered audio and text translation features.
+* 500,000 Concurrent users, with 1000 avatars per instance: We’re increasing our capacity to allow for even larger gatherings in the Metaverse!
+* Friend system: We’re introducing a friend system to make it easier to connect and interact with others in Bloktopia.
+* Advertising Revenue Share (ADBLOK): We’re rolling out a revenue share program for advertising, providing another way for users to earn within the Metaverse.
+* E-Commerce: We’re integrating e-commerce capabilities, opening up new possibilities for trade and transactions within Bloktopia.
+* Bloktopia SDK (User Generated Content): We’re launching a Software Development Kit (SDK) to empower users to create and share their own content within Bloktopia.
+We also welcome you to share your thoughts with us. Simply email your ideas to roadmap@bloktopia.com to be considered for the ‘What’s to come’ list.
+This represents a significant amount of development work that we’ve been undertaking behind the scenes, using community tests to help shape these ideas.
+As the market starts to pick back up, we are excited about what the future holds for Bloktopia. Stay tuned for more details on some of the finer points within the Roadmap in the very near future, where we’ll be releasing dedicated articles on some of the new features announced in the Roadmap.
+Welcome once again, to the future of the Metaverse!
+About Bloktopia
+Bloktopia is a VR skyscraper made up of 21 floors to commemorate 21 million Bitcoin. It will act as a central hub and welcome all levels of crypto experience. For the first time ever, users will have access to crypto information and immersive content all in one place.
+Learn, Earn, Play and Create
+Educate yourself in the basics of crypto or engage in more advanced learning from some of the world leading minds in the industry, earn revenue through real estate ownership & advertising, play games with friends, build networks and much more.
+Website | Twitter | Telegram | Discord
