@@ -19,7 +19,6 @@ class TestModels(TestCase):
         self.assertIn("content", context.documents[0])
         self.assertIn("the new roadmap", context.documents[0]["content"])
 
-
     def test_summarize_documents(self):
         pass
 
