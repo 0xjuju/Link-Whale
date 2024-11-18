@@ -149,10 +149,8 @@ class LLMFactory:
         Create and return an assistant for the given thread using the OpenAI Assistant API.
 
         Args:
-            thread_id (str): The ID of the thread to which the assistant belongs.
             name (str): The name of the assistant.
             description (str, optional): A brief description of the assistant. Defaults to None.
-            model (str): The model to use for the assistant. Defaults to 'gpt-4o'.
             tools (list, optional): A list of tools for the assistant. Defaults to a code interpreter tool.
             tool_resources (dict, optional): Resources for the tools. Defaults to None.
 
@@ -187,7 +185,8 @@ class LLMFactory:
 
         return response
 
-    def get_token_count(self, document: str) -> int:
+    @staticmethod
+    def get_token_count(document: str) -> int:
         """
         Get the token count of a given document.
 
@@ -197,6 +196,87 @@ class LLMFactory:
         Returns:
             int: The number of tokens in the document.
         """
-        encoding = tiktoken.encoding_for_model(self.model)
+        encoding = tiktoken.encoding_for_model("gpt-4")
         tokens = encoding.encode(document)
         return len(tokens)
+
+    @staticmethod
+    def wait_for_complete_status(run) -> None:
+        """
+        Args:
+            run (Run): An instance that contains metadata of a thread that has been processed by the assistants
+        """
+        while run.status != 'completed':
+            run = openai.beta.threads.runs.retrieve(thread_id=run.thread_id, run_id=run.id)
+
+    def summarize_document(self, document: dict) -> dict:
+        """
+        Summarize the document content by creating a summarizer and a verifier assistant to ensure quality.
+        The summarization is repeated until the verification passes. Messages are added to the existing thread for verification.
+
+        Args:
+            document (dict): A dictionary containing the "content" key with the main information to be summarized.
+
+        Returns:
+            dict: The updated dictionary with the "summary" key containing the generated summary.
+        """
+        # Create a new thread for the summarization process
+        thread = self.create_thread(messages=[
+            {
+                "role": "user",
+                "content": "Please summarize the following content: " + document["content"]
+            }
+        ])
+        thread_id = thread.id
+
+        # Create two assistants: one for summarizing, another for verifying the summary
+        summarizer = self.create_assistant(
+            name="Summarizer",
+            description="An assistant that summarizes content."
+        )
+        verifier = self.create_assistant(
+            name="Verifier",
+            description="An assistant that verifies if the summary contains all main points of the content."
+        )
+
+        properly_summarized = False
+        while not properly_summarized:
+            print("Summary attempt... ")
+
+            summary_prompt = f"Create a summary of the the following:{document['content']}"
+            openai.beta.threads.messages.create(
+                thread_id=thread_id,
+                role="user",
+                content=summary_prompt
+            )
+
+            # Run summarizer assistant to generate the summary
+            summary_run = self.run(thread_id=thread_id, assistant_id=summarizer.id)
+            self.wait_for_complete_status(summary_run)
+
+            # List the messages once the run is complete
+            messages = openai.beta.threads.messages.list(thread_id=thread_id)
+            summary = messages.data[0].content
+
+            # Add a new message with the verification prompt
+            verification_prompt = (f"Here is the original content: {document['content']}\n\nHere is the summary: "
+                                   f"{summary}\n\nDoes the summary include all the important points? If not, list the "
+                                   f"missing points, otherwise respond with '1'.")
+
+            openai.beta.threads.messages.create(
+                thread_id=thread_id,
+                role="user",
+                content=verification_prompt
+            )
+            # Run verifier assistant to check the summary
+            verification_run = self.run(thread_id=thread_id, assistant_id=verifier.id)
+            self.wait_for_complete_status(verification_run)
+
+            messages = openai.beta.threads.messages.list(thread_id=thread_id)
+
+            verification_response = messages.data[0].content
+            if verification_response[0].text.value.strip() == "1":
+                properly_summarized = True
+                document["summary"] = summary[0].text.value.strip()
+
+        return document
