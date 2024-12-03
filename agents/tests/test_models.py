@@ -22,6 +22,7 @@ class TestModels(TestCase):
     def test_summarize_documents(self):
         document_json = self.test_context.documents[0]
         summarized = self.bloktopia.summarize_document(document_json)
-        print(summarized["summary"])
+        # print(summarized["summary"])
+
 
 

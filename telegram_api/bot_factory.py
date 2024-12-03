@@ -1,7 +1,7 @@
 from decouple import config
 import telegram
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, CallbackContext
-from telegram import Update
+from telegram import Update, Document
 import asyncio
 
 
@@ -33,6 +33,9 @@ class TelegramBotFactory:
             # If group_id is None, try to automatically retrieve it from updates
             if self.group_id is None:
                 self.group_id = self._retrieve_group_id()
+
+            # List of accepted usernames for direct message interaction
+            self.accepted_usernames = ["admin_username1", "admin_username2"]
 
         except Exception as e:
             print(f"Error initializing bot for {bot}: {e}")
@@ -121,6 +124,44 @@ class TelegramBotFactory:
             print(f"Error getting messages from group {self.group_id}: {e}")
             raise
 
+    async def handle_dm(self, update: Update, context: CallbackContext) -> None:
+        """
+        Handle direct messages from users.
+        Only users in the accepted usernames list can interact with the bot.
+
+        Args:
+            update (Update): The incoming update.
+            context (CallbackContext): The context of the callback.
+        """
+        username = update.message.from_user.username
+        if username not in self.accepted_usernames:
+            await update.message.reply_text("You are not authorized to interact with this bot.")
+            return
+
+        await update.message.reply_text("Hello! You can upload a document by clicking the upload button.")
+
+    async def handle_document_upload(self, update: Update, context: CallbackContext) -> None:
+        """
+        Handle document uploads by the user.
+        Only accepts .txt or .pdf file formats.
+
+        Args:
+            update (Update): The incoming update.
+            context (CallbackContext): The context of the callback.
+        """
+        document: Document = update.message.document
+        if document:
+            file_name = document.file_name
+            if not (file_name.endswith('.txt') or file_name.endswith('.pdf')):
+                await update.message.reply_text("Error: Only .txt or .pdf files are allowed.")
+                return
+
+            file = await context.bot.get_file(document.file_id)
+
+            await update.message.reply_text(f"File {file_name} has been uploaded successfully.")
+        else:
+            await update.message.reply_text("Error: No document found.")
+
     def start_bot(self) -> None:
         """
         Start the Telegram bot, handling errors if any occur.
@@ -138,11 +179,18 @@ class TelegramBotFactory:
             mention_filter = filters.TEXT & filters.Regex(f"^@{self.bot_username}")
             application.add_handler(MessageHandler(mention_filter, self.handle_mentions))
 
+            # Add message handler for direct messages
+            application.add_handler(MessageHandler(filters.TEXT & filters.ChatType.PRIVATE, self.handle_dm))
+
+            # Add document handler for uploads
+            application.add_handler(MessageHandler(filters.Document.ALL & filters.ChatType.PRIVATE, self.handle_document_upload))
+
             print(f"Bot for group {self.group_id if self.group_id else 'not set'} is running.")
             # Start polling to receive updates from Telegram
             application.run_polling()
         except Exception as e:
             print(f"Error occurred while running the bot for group {self.group_id}: {e}")
+
             # Handle stopping the bot if an error occurs
             print(f"Bot for group {self.group_id} is stopping due to an error.")
             raise

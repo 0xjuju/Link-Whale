@@ -52,7 +52,7 @@ class LLMFactory:
             model=self.model,
             messages=messages
         )
-
+        
         return response['choices'][0]['message']['content'].strip()
 
     @staticmethod
